@@ -24,19 +24,19 @@ jobs:
 
     # Restore dependencies    
     - name: Restore
-      run: dotnet restore .\UsPresidentialElection.sln
+      run: dotnet restore ./UsPresidentialElection.sln
       
     # Build the solution 
     - name: Build
-      run: dotnet build .\UsPresidentialElection.sln
+      run: dotnet build ./UsPresidentialElection.sln
 
     # Publish the web app into the folder "web-release"
     - name: Publish the Web App
-      run: dotnet publish .\UsPresidentialElection\UsPresidentialElection.csproj -c Release -o web-release --nologo
+      run: dotnet publish ./UsPresidentialElection/UsPresidentialElection.csproj -c Release -o ./web-release --nologo
 
     # changes the base-tag in index.html from '/' to 'us-presidential-election' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to us-presidential-election
-      run: sed -i 's/<base href="\/" \/>/<base href="\/us-presidential-election\/" \/>/g' web-release/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/us-presidential-election\/" \/>/g' ./web-release/wwwroot/index.html
 
     # This task uses a variable that is present in all the github workflows that is secrets.GITHUB_TOKEN in order to authenticate
     - name: Commit wwwroot to GitHub Pages
@@ -45,4 +45,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
         FOLDER: web-release/wwwroot  
-
