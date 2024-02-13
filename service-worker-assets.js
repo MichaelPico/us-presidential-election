@@ -33,7 +33,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-IoMTPVDdoX5Q4pW0u7bbsR9qVhqMA1HmOVw7aPvrli8=",
+      "hash": "sha256-IedTT4UDW60Y1eydawzqyQlmlR9CAqhqIk\/ewxIjT0w=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -161,12 +161,16 @@
       "url": "_framework\/System.Text.RegularExpressions.wasm"
     },
     {
-      "hash": "sha256-jNc+I7hJDEWBd4GeHA9dhU3OLKvc6+QSjU\/qq91JCLg=",
+      "hash": "sha256-3qeHvtiLj4lW50x3TYzvVswk1t01aTv3DuQWh+deVnw=",
       "url": "_framework\/UsPresidentialElection.wasm"
     },
     {
       "hash": "sha256-EsOvRV2zUpiX7OSl96ZrcoNJ85YS+dMkozD68Xlps30=",
       "url": "UsPresidentialElection.styles.css"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+\/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": ".nojekyll.txt"
     },
     {
       "hash": "sha256-yis2dNdJ6e9R472mcuwUOsxBPCQX3snSMmHAL3zu2D8=",
@@ -205,5 +209,5 @@
       "url": "sample-data\/weather.json"
     }
   ],
-  "version": "yzSxHz7H"
+  "version": "xGD7GVzK"
 };
