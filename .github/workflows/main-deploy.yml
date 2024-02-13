@@ -1,0 +1,48 @@
+name: .NET Core Desktop
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  deploy-to-github-web:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4.0.0
+      with:
+        dotnet-version: 8.0.x
+
+    # Restore dependencies    
+    - name: Restore
+      run: dotnet restore .\UsPresidentialElection.sln
+      
+    # Build the solution 
+    - name: Build
+      run: dotnet build .\UsPresidentialElection.sln
+
+    # Publish the web app into the folder "web-release"
+    - name: Publish the Web App
+      run: dotnet publish .\UsPresidentialElection\UsPresidentialElection.csproj -c Release -o web-release --nologo
+
+    # changes the base-tag in index.html from '/' to 'us-presidential-election' to match GitHub Pages repository subdirectory
+    - name: Change base-tag in index.html from / to us-presidential-election
+      run: sed -i 's/<base href="\/" \/>/<base href="\/us-presidential-election\/" \/>/g' web-release/wwwroot/index.html
+
+    # This task uses a variable that is present in all the github workflows that is secrets.GITHUB_TOKEN in order to authenticate
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: web-release/wwwroot  
+
