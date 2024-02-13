@@ -38,10 +38,10 @@ jobs:
     - name: Change base-tag in index.html from / to us-presidential-election
       run: sed -i 's/<base href="\/" \/>/<base href="\/us-presidential-election\/" \/>/g' ./web-release/wwwroot/index.html
 
-    # This task uses a variable that is present in all the github workflows that is secrets.GITHUB_TOKEN in order to authenticate
-    - name: Commit wwwroot to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+    # Commit to gh-pages in order to host the web app
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-github-pages@v3.1.12
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: web-release/wwwroot  
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: web-release/wwwroot
+    
