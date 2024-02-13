@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "UsPresidentialElection",
   "resources": {
-    "hash": "sha256-EP9V3Q9auO5OkJSmX2YcWokA2CK6sxbgl32HHbiemlc=",
+    "hash": "sha256-pNByg22NwXwCeDdnJFb0Y9AWathu7AEumzMOVdx5O6c=",
     "jsModuleNative": {
       "dotnet.native.8.0.1.ahpp78valh.js": "sha256-SGOlISx+3G4kkvpC9Uq3qoPGsnjxGmW61QBev0lyI5U="
     },
@@ -48,7 +48,7 @@
       "System.Text.Encodings.Web.wasm": "sha256-+xy+tOrpZQfQay41WvWhFxGHmHiYCwxIZC0u0YeG8MY=",
       "System.Text.Json.wasm": "sha256-3+CtWg+4SO1T+15o1W5mTBoxvMzlPRN8VPA3AvcZBXM=",
       "System.Text.RegularExpressions.wasm": "sha256-gBOmDgKZBuDoGsHbhJq/ngBU9uslj8K/+ZuZekYrq54=",
-      "UsPresidentialElection.wasm": "sha256-cFdlfHYI3/VdRrc5KLTK2PmRxJ6ke7LfNeh8jc8Z7u4="
+      "UsPresidentialElection.wasm": "sha256-jNc+I7hJDEWBd4GeHA9dhU3OLKvc6+QSjU/qq91JCLg="
     }
   },
   "cacheBootResources": true,
