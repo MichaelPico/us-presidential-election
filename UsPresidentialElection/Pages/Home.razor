@@ -1,7 +1,45 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using UsPresidentialElection.Models
+
+@* Esta pagina usa esta api https://data.cityofnewyork.us/Business/Legally-Operating-Businesses/w7w3-xahh/about_data *@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+@if (LoadingData)
+{
+    <h2> Loading... </h2>
+}
+else
+{
+    <QuickGrid Items="@Businesses.AsQueryable()" Pagination="@pagination">
+        <PropertyColumn Property="@(b => b.license_nbr)" Sortable="true" Title="DCA License Number" />
+        <PropertyColumn Property="@(b => b.license_type)" Sortable="true" Title="License Type" />
+        <PropertyColumn Property="@(b => b.lic_expir_dd)" Sortable="true" Title="License Expiration Date" />
+        <PropertyColumn Property="@(b => b.license_status)" Sortable="true" Title="License Status" />
+        <PropertyColumn Property="@(b => b.license_creation_date)" Sortable="true" Title="License Creation Date" />
+        <PropertyColumn Property="@(b => b.industry)" Sortable="true" Title="Industry" />
+        <PropertyColumn Property="@(b => b.business_name)" Sortable="true" Title="Business Name" />
+        <PropertyColumn Property="@(b => b.address_city)" Sortable="true" Title="Address City" />
+        <PropertyColumn Property="@(b => b.address_state)" Sortable="true" Title="Address State" />
+        <PropertyColumn Property="@(b => b.address_zip)" Sortable="true" Title="Address Zip" />
+    </QuickGrid>
 
-Welcome to your new app.
+    <Paginator State="@pagination" />
+}
+
+@code{
+
+    private IEnumerable<LegallyOperatingBusinesses> Businesses { get; set; }
+
+    private PaginationState pagination = new PaginationState { ItemsPerPage = 20 };
+
+    private bool LoadingData = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Businesses = await SodaService.GetLegallyOperatingBusinesses();
+        LoadingData = false;
+    }
+
+}
